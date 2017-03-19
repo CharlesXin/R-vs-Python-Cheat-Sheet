@@ -1,0 +1,49 @@
+---
+title: 'R vs Python: install.package vs import'
+author: "Chi Xin"
+date: "February 16, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Since both R and Python are open source programming language, learning how to import packages becomes important for beginners. Today, I will show how to install data.table package in R and import numpy package into python. Noted that both data.table and numpy are very useful packages when manipulating and cleaning data in R and Python. 
+
+In R: 
+
+```{r}
+# download and install your package from CRAN 
+install.packages("dplyr", repos="http://cran.rstudio.com/")
+
+# recall it in your library 
+library(dplyr) # no quote needed
+
+
+```
+
+*** 
+
+In Python, you have to import the package; os, first  
+```{python }
+import numpy as np
+# you can give numpy a nickname such as "np" here just for quick reference
+
+# check if it is imported
+import sys
+print("Check if numpy has been imported:", 'numpy' in sys.modules)
+
+```
+
+
+```
+
+
+

@@ -1,0 +1,58 @@
+---
+title: 'R vs Python: setwd vs os.chdir'
+author: "Chi Xin"
+date: "February 6, 2017"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+For both R and Python, setting and getting working directory is always the first thing you have to learn for everyone. Today, I will show how to get and set your working dirsctory both in R and Python. 
+
+In R: 
+
+```{r}
+# check your current working directory
+getwd()
+
+# change it to your local folder, like: C:\Users\cxin
+setwd("/Users/chuck/R-vs-Python/R vs Python(1)")
+
+# check your current working directory after changed. 
+getwd()
+
+```
+
+*** 
+
+In Python, you have to import the package; os, first  
+```{python }
+import os
+
+# check your current working directory
+print(os.getcwd())
+
+```
+
+
+```{python }
+import os
+# change it to your ocal folder, like: Libraries\\Documents
+os.chdir("/Users/chuck/R-vs-Python/R vs Python(1)")
+
+# check your current working directory after changed.
+print(os.getcwd())
+
+```
+
+
+
