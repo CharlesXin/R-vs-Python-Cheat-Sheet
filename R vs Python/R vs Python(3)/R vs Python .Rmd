@@ -1,0 +1,87 @@
+---
+title: 'R vs Python: order vs pd.sort'
+author: "Chi Xin"
+date: "March 20, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Sort your dataset by a column is one of the basic operations when manipulating dataset. Today, we will show how to do it in both R and Python!
+
+In R: 
+
+```{r}
+# iris is a sample dataset from R
+head(iris, 5) # look up the first five rows of this dataset 
+
+# now if we want sort it by column "Sepal.Length"
+head(iris[order(iris$Sepal.Length), ], 10)  
+
+# now if we want sort it by column "Sepal.Length" and "Sepal.Width"
+head(iris[order(iris$Sepal.Length, iris$Sepal.Width), ], 10)
+
+# now if we want sort it by "Sepal.Length" (ascending) and "Sepal.Width" (descending)
+head(iris[order(iris$Sepal.Length, -iris$Sepal.Width), ], 10)
+
+```
+
+*** 
+
+In Python:
+```{python, warning=FALSE}
+# Unlike to R, we have to import mtcars dataset first 
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+print("First 5 rows in iris")
+print(iris.head(5))
+
+```
+
+
+```{python, warning=FALSE}
+# Unlike to R, we have to import mtcars dataset first 
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+
+# now if we want sort it by column "sepal_length"
+print("sort it by column sepal_length")
+print(iris.sort_values(['sepal_length']).head(10))
+
+```
+
+
+```{python, warning=FALSE}
+# Unlike to R, we have to import mtcars dataset first 
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+
+# now if we want sort it by column "sepal_length" and "sepal_width"
+print("sort it by column sepal_length and sepal_width")
+print(iris.sort_values(['sepal_length', 'sepal_width']).head(10))
+
+
+```
+
+```{python, warning=FALSE}
+# Unlike to R, we have to import mtcars dataset first 
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+# now if we want sort it by "sepal_length" (ascending) and "sepal_width" (descending)
+print("sort it by column sepal_length(ascending) and sepal_width(descending)")
+print(iris.sort_values(['sepal_length', 'sepal_width'], ascending=[1,0]).head(10))
+```
+
+
+
