@@ -1,5 +1,5 @@
 ---
-title: 'R vs Python: order vs pd.sort'
+title: 'R vs Python: order vs pd.sort_values'
 author: "Chi Xin"
 date: "March 20, 2017"
 output:
@@ -38,7 +38,7 @@ head(iris[order(iris$Sepal.Length, -iris$Sepal.Width), ], 10)
 
 In Python:
 ```{python, warning=FALSE}
-# Unlike to R, we have to import mtcars dataset first 
+# In python, we have to import mtcars dataset first 
 import pandas as pd
 iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 print("First 5 rows in iris")
@@ -48,7 +48,6 @@ print(iris.head(5))
 
 
 ```{python, warning=FALSE}
-# Unlike to R, we have to import mtcars dataset first 
 import pandas as pd
 iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 
@@ -61,7 +60,6 @@ print(iris.sort_values(['sepal_length']).head(10))
 
 
 ```{python, warning=FALSE}
-# Unlike to R, we have to import mtcars dataset first 
 import pandas as pd
 iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 
@@ -74,7 +72,6 @@ print(iris.sort_values(['sepal_length', 'sepal_width']).head(10))
 ```
 
 ```{python, warning=FALSE}
-# Unlike to R, we have to import mtcars dataset first 
 import pandas as pd
 iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 

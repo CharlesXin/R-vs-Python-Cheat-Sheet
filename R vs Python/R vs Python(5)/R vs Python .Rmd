@@ -1,0 +1,59 @@
+---
+title: 'R vs Python: fread vs pd.read_csv'
+author: "Chi Xin"
+date: "March 22, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Following the last part, today we will see how to read a txt file into R and Python. 
+
+***
+In R: There are multiple ways to read a txt file into R. Here, we recommend using the data.table package instead of read.table. There are a lot benefits of using data.table; here we will leave more details of data.table packages to the future.    
+
+
+```{r, warning=FALSE}
+
+# install.packages("data.table")
+library(data.table)
+
+iris = fread(input = 'iris.txt',
+             na.strings="NA", # A character vector of strings which are to be interpreted as NA values
+             stringsAsFactors=FALSE, # Convert all character columns to factors? 
+             nrows=-1L, # The number of rows to read, by default -1 means all
+             colClasses=c("integer", "numeric", "numeric", "numeric", "numeric", "factor") 
+             # A character vector of classes (named or unnamed)
+             )
+
+
+# assign column names 
+setnames(iris, c("id", "sepal_length ", "sepal_width", "petal_length", "petal_width", "class"))
+
+# check your data
+head(iris, 5)
+
+
+
+```
+
+*** 
+
+In Python:
+```{python, warning=FALSE}
+# here, we still use pd.read_csv from the pandas package.
+import pandas as pd
+iris = pd.read_csv('iris.txt', sep="\t") # note here, we use "\t" as the sepreate symbol since it is a txt file. 
+
+print(iris.head(5))
+
+```
+

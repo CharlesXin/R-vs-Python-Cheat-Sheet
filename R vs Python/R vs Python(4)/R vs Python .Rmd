@@ -1,0 +1,49 @@
+---
+title: 'R vs Python: read.csv vs pd.read_csv(write.csv vs pd.to_csv'
+author: "Chi Xin"
+date: "March 22, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Being an analyst, the very first thing you have to know about a language is how to read the data. Today I will show how to read a csv file in R and Python.
+
+In R: 
+
+```{r}
+# read a csv file 
+iris = read.csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+# check your data
+head(iris, 5)
+
+# check your saving directory
+getwd()
+
+# write it to a csv file called "iris_R.csv", without saving the row names
+write.csv(iris, file = "iris_R.csv", row.names = F)
+
+```
+
+*** 
+
+In Python:
+```{python, warning=FALSE}
+# here, we still use the pandas package.
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+
+# Also write it as a csv file called "iris_python.csv", without saving the row names.
+iris.to_csv("iris_python.csv", index=False)
+
+```
+
