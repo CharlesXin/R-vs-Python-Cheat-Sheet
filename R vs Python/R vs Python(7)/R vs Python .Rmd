@@ -1,0 +1,66 @@
+---
+title: 'R vs Python: cbind(rbind) vs pd.concat'
+author: "Chi Xin"
+date: "March 25, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Combine two data sets together is also a very popular operation for a data analysis. Today we will show how to combine two datasets by columns and rows. The next session we will show how to merge two datasets by a key in R and Pythhon. 
+
+***
+In R: 
+
+```{r, warning=FALSE}
+
+# We will keep using iris dataset as an example. First, we artificially split iris into four sub-datasets by row/column
+iris = read.csv("iris.csv")
+iris_1 = iris[1:100, ] # by row, first part
+iris_2 = iris[101:150, ] # by row, second part 
+iris_3 = iris[, 1:2] # by column, first part
+iris_4 = iris[, 3:5] # by column, second part 
+
+# combine iris_1 and iris_2 by row. 
+iris_r = rbind(iris_1, iris_2)  
+# rbind requires two datasets should have the same order of the column. If the column or the order of column are different, we can use the rbind.fill function the package, plyr. 
+
+# combine iris_3 and iris_4 by column. 
+iris_c = cbind(iris_3, iris_2)  
+# cbind requires two datasets should have the same order of the row.
+
+
+```
+
+*** 
+
+In Python:
+```{python, warning=FALSE}
+# import the data file
+import pandas as pd
+iris = pd.read_csv('iris.csv') 
+
+iris_1 = iris.iloc[:100, ] 
+# we will introduce slicing data frame in the future, but here, .iloc is a way to extract part of data 
+iris_2 = iris.iloc[100:, ]
+iris_3 = iris.iloc[:, :2] 
+iris_4 = iris.iloc[:, 2:]
+
+#  combine iris_1 and iris_2 by row.
+iris_r = pd.concat([iris_1, iris_2], axis=0) #  axis=0 is the same as rbind in r 
+
+#  combine iris_3 and iris_4 by column.
+iris_c = pd.concat([iris_3, iris_4], axis=1) #  axis=1 is the same as cbind in r 
+
+
+
+```
+

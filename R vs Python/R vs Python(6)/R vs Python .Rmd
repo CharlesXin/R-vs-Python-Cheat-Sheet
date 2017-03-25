@@ -1,0 +1,62 @@
+---
+title: 'R vs Python: colname vs pd.columns.values'
+author: "Chi Xin"
+date: "March 25, 2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+Get and change the column names of your data frame is very useful in many situations. Today we will show how to do it in both R and Python. 
+
+***
+In R: 
+
+```{r, warning=FALSE}
+
+# We will keep using iris dataset as an example. 
+library(data.table)
+iris = read.csv("iris.csv")
+
+# Get the column names of iris 
+colnames(iris)
+
+# change name of the fifth column from "species" to "Class"
+colnames(iris)[5] = "Class"
+colnames(iris)
+
+# change which column name is "Class" back to "species"
+colnames(iris)[colnames(iris) == "Class"] = "species"
+colnames(iris)
+
+```
+
+*** 
+
+In Python:
+```{python, warning=FALSE}
+# import the data file
+import pandas as pd
+iris = pd.read_csv('iris.csv') 
+
+print("current column names")
+print(iris.columns.values)
+
+print("\n change name of the fifth column from species to Class")
+iris.columns.values[4] = "Class"
+print(iris.columns.values)
+
+print("\n change which column name is Class back to species")
+iris.columns.values[iris.columns.values == "Class"] = 'species'
+print(iris.columns.values)
+
+```
+
