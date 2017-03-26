@@ -2,7 +2,7 @@
 Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean, NIPS 2013
 
 
-传统的word representation一般采用one-hot vector representation, 也就是给定一个词汇表，词汇量为N，那么第k个词就用一个0-1向量表示，[0,0,...,1,0,..0]， 即第k个元素为1，其余均为0。这个表示方法优点是无须训练，缺点就是忽略了词与词之间的在句法及语义上的关系（syntactic and semantic word relationships）。 比如说hotel和motel，它们本身是两个在语义上（sematically）非常相近的词，但是用one-hot vector 来表示的话，它们之间的点乘积为0，或相似性为0. （一般在自然语言处理中我们用cos similarity来表示词与词之间的相似性）。
+传统的word representation一般采用one-hot vector representation, 也就是给定一个词汇表，词汇量为N，那么第k个词就用一个0-1向量表示，[0,0,...,1,0,..0]， 即第k个元素为1，其余均为0。这个表示方法优点是无须训练，缺点就是忽略了词与词之间的在句法及语义上的关系（syntactic and semantic word relationships）。 比如说hotel和motel，它们本身是两个在语义上（sematically）非常相近的词，但是用one-hot vector 来表示的话，它们之间的cos similarity为0，或相似性为0. （一般在自然语言处理中我们用cos similarity来表示词与词之间的相似性）。
 
 这篇论文主要介绍了一种利用神经网络来训练word representation 或者叫做word embedding的模型，称作 Skip-gram model。经过这个模型训练出来的word representation能够抓住word在句法及语义上的关系（syntactic and semantic word relationships）。比如 Capital + France = Paris， king - man + woman = queen等等， 这些都是one-hot vector representation 做不到的。另外一个优点就是Skip-gram model训练出来的word representation的维度很低，比如word2vec模型经Google News数据集训练出来的word representation只有300维，相对于one-hot vector（其维度和词汇量相同，对于大的数据集，在100万以上）已经是大大降低维度了。
 
