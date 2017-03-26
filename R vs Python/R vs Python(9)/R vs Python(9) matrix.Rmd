@@ -1,0 +1,65 @@
+---
+title: "R vs Python matrix"
+author: Lawrence Liu
+date: March 26, 2017
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+
+Matrix is the building blocks in scientific computation. Let's compare the creation and indexing of matrix in R and Python.
+
+### Creation
+#### In R
+
+The function used in R is `matrix`, it has several useful options like nrow, ncol and byrow with which we can determine how the matrix is created.
+```{r}
+matrix(1:25, nrow = 5, ncol = 5, byrow = TRUE)
+matrix(1:25, nrow = 5, ncol = 5, byrow = FALSE)
+```
+
+#### In Python
+```{python, engine.path="/Users/lawrence/anaconda/bin/python"}
+import numpy as np
+x = np.array(xrange(1, 26))
+x.shape = [5,5]
+print x, '\n'
+y = x.transpose()
+print y
+```
+
+### Indexing
+#### In R
+```{r}
+mat <- matrix(1:25, nrow = 5, ncol = 5, byrow = TRUE)
+#first column
+mat[, 1]
+#column 2 to 4
+mat[, 2:4]
+#row 2 to 5
+mat[2:5, ]
+#row 1 and row 3
+mat[c(1,3), ]
+```
+
+#### In Python
+```{python, engine.path="/Users/lawrence/anaconda/bin/python"}
+import numpy as np
+x = np.array(xrange(1, 26))
+x.shape = [5,5]
+#first column
+print x[:, 0], '\n'
+#column 2 to 4
+print x[:, 1:4], '\n'
+#row 2 to 5
+print x[1:6, :], '\n'
+#row 1 and row 3
+print x[np.array([0,2]),], '\n'
+```
