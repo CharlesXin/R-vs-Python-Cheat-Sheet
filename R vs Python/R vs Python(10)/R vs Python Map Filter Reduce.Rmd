@@ -1,0 +1,57 @@
+---
+title: "R vs Python Map Filter Reduce"
+author: Lawrence Liu
+date: March 26, 2017
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### _**We believe two languages can be killed with one stone! **_
+
+*** 
+***
+
+There are some common higher-order functions in functional programming languages. In R they are `Reduce`, `Filter`, `Map`. We compare them with their Python counterparts.
+
+
+####In R
+```{r}
+nums <- 1:10
+#apply sum to nums and reduce it to a single number
+Reduce(sum, nums)
+#choose even number from nums
+Filter(function(x) x %% 2 == 0, nums)
+#multiple every element in nums with 2
+as.numeric(Map(function(x) x * 2, nums))
+```
+
+####In Python
+```{python, engine.path="/Users/lawrence/anaconda/bin/python"}
+nums = xrange(1,11)
+#apply sum to nums and reduce it to a single number
+print reduce(lambda x, y: x + y , nums), '\n'
+#choose even number from nums
+print filter(lambda x: x % 2 == 0, nums), '\n'
+#multiple every element in nums with 2
+print map(lambda x: x * 2, nums), '\n'
+```
+
+
+###Usage of higer-order functions.
+e.g. `*` is a binary operator, but `prod` in R can be applied to a vector. Reduce can be used to implement a prod function which takes a numeric vector with any length.
+```{r}
+x <- 1:10
+#prod1 can only take 2 numbers
+prod1 <- function(a, b)
+  return(a * b)
+
+#prod2 can take a numeric vector
+prod2 <- function(vec){
+  Reduce(prod1, vec)
+}
+
+prod2(x)
+```
+
