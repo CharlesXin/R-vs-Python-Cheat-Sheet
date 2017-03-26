@@ -1,0 +1,31 @@
+---
+title: "R vs Python"
+output: html_document
+---
+
+`rep` in R is a very useful utility function when doing simulations. Here we indroduce how to use it and its counterpart in Python. 
+
+
+```{r}
+#repeat entire x 2 times
+rep(x = c(1,2,3), times = 2)
+#repeat entire x till the length of the new object is 10
+rep(x = c(1,2,3), length.out = 10)
+#repeat each element in x 2 times
+rep(x = c(1,2,3), each = 2)
+#repeat each element in x 2 times to get y, then repeat entire y 2 times
+rep(x = c(1,2,3), times = 2, each = 2)
+```
+
+Its functionality is implemented into 2 functions: `np.tile` and `np.repeat`.
+```{python, engine.path="/Users/lawrence/anaconda/bin/python"}
+import numpy as np
+x = np.array([1,2,3])
+#repeat entire x 2 times
+print np.tile(x,2)
+#repeat each element in x 2 times
+print np.repeat(x, 2)
+#repeat each element in x 2 times to get y, then repeat entire y 2 times
+print np.tile(np.repeat(x, 2),2)
+```
+
