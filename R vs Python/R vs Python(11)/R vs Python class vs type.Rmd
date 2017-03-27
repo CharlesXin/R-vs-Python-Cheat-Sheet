@@ -1,0 +1,31 @@
+---
+title: "R vs Python class vs type"
+author: Lawrence Liu
+date: March 26, 2017
+output: html_document
+---
+
+## We believe two languages can be killed with one stone!
+***
+***
+
+Class is an important concept in Object-Oriented Programming, both R and Python are OOP language. We use class in R and type in Python to check an object's class.
+
+#### In R
+```{r cars}
+library(tibble)
+class(iris)
+iris.tb <- as_tibble(iris)
+class(iris.tb)
+```
+
+Class is not a mutually exlusive concept in R, which means one object could have more than 1 class. Here iris.tb has 3 classes.
+
+#### In Python
+```{python, engine.path="/Users/lawrence/anaconda/bin/python"}
+import pandas as pd
+iris = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+#The class of iris is DataFrame
+print type(iris)
+```
+
