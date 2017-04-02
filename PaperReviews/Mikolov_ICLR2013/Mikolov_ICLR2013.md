@@ -1,4 +1,4 @@
-# Efficient Estimation of Word Representations in Vector Space#
+# Efficient Estimation of Word Representations in Vector Space
 Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean; ICLR 2013
 
 上一周我们推荐了Mikolov的另一篇关于word2vec的论文，主要针对skip-gram模型性能的优化。本周推荐的这篇文章则是奠定了word2vec的基础。首先，Mikolov提出两种新的类神经网络语言模型（没有隐层），并且它们的复杂度远低于之前的NNLM和RNNLM模型。其次，作者也非常精巧的验证了这两种模型在句法和语义上的高准确度。小编还认为，这两种模型在自然语言处理之外，在如推荐系统，网络分析等，都有很强的潜力。
