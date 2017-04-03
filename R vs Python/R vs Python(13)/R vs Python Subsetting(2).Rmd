@@ -1,0 +1,38 @@
+---
+title: "R vs Python Subsetting(2)"
+author: "Lawrence"
+date: "April 2, 2017"
+output: html_document
+---
+
+## We believe two languages can be killed with one stone!
+***
+***
+
+Indexing and slicing are the most important operations on data frame. We compare the different ways we use between R and Python for label based indexing.
+
+####In R
+```{r}
+#first 10 rows in column Sepal.Length
+iris[1:10, "Sepal.Length"]
+#first 10 rows in column Sepal.Length and Petal.Length
+iris[1:10, c("Sepal.Length", "Petal.Length")]
+#first 10 rows in column Sepal.Length (as attributes)
+iris$Sepal.Length[1:10]
+```
+####In Python
+```{python}
+from sklearn.datasets import load_iris
+import pandas as pd
+iris_all = load_iris()
+iris = iris_all.data
+iris_df = pd.DataFrame(iris, columns=['Sepal_Length', 'Sepal_Width', 'Petal_Length', 'Petal_Width'])
+#first 10 rows in column Sepal_Length
+print iris_df.loc[xrange(10), "Sepal_Length"], '\n'
+#first 10 rows in column Sepal_Length and Petal_Length
+print iris_df.loc[xrange(10), ["Sepal_Length", "Petal_Length"]], '\n'
+#first 10 rows in column Sepal.Length (as attributes)
+print iris_df.Sepal_Length[:10,]
+
+```
+

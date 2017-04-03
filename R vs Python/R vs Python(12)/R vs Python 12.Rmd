@@ -9,7 +9,7 @@ output: html_document
 ***
 ***
 
-Indexing and slicing are the most operations on data frame. We compare the different ways we use between R and Python.
+Indexing and slicing are the most important operations on data frame. We compare the different ways we use between R and Python for integer based indexing.
 
 ####
 In R
@@ -29,9 +29,9 @@ iris_all = load_iris()
 iris = iris_all.data
 iris_df = pd.DataFrame(iris, columns=['Sepal_Length', 'Sepal_Width', 'Petal_Length', 'Petal_Width'])
 #first 2 rows
-print iris_df.iloc[[0,1],]
+print iris_df.iloc[[0,1],] , '\n'
 #first 2 columns and first 10 rows
-print iris_df.iloc[xrange(10), xrange(2)]
+print iris_df.iloc[xrange(10), xrange(2)], '\n'
 #all rows except the first 140
 print iris_df.iloc[xrange(140, 150), :]
 ```
