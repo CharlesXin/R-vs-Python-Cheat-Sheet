@@ -1,0 +1,35 @@
+---
+title: "R vs Python table"
+author: "Lawrence"
+date: "May 01 , 2017"
+output: html_document
+---
+## We believe two languages can be killed with one stone!
+***
+***
+Creating a 2 way table is very useful in exploratory analysis. We talk about how Python and R does it.
+
+####In R
+```{r}
+set.seed(123)
+x <- rbinom(n = 100, prob = 0.5, size = 1)
+y <- rbinom(n = 100, prob = 0.5, size = 1)
+#show frequency 
+table(x,y)
+#show percentage
+prop.table(table(x,y), margin = 1)
+```
+
+####In Python
+```{python,engine.path="/Users/lawrence/anaconda/bin/python"}
+from scipy.stats import bernoulli
+from pandas import crosstab
+x = bernoulli.rvs(p = 0.5, size = 100)
+y = bernoulli.rvs(p = 0.5, size = 100)
+#show frequency
+print crosstab(x,y)
+#show percentage
+print crosstab(x,y, normalize="index")
+
+```
+

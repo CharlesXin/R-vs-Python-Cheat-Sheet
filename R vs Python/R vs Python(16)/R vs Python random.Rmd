@@ -1,0 +1,41 @@
+---
+title: "R vs Python random"
+output: html_document
+---
+## We believe two languages can be killed with one stone!
+***
+***
+
+This tutorial talks about how R and Python generate random numbers.
+
+####In R
+```{r}
+#generate random numbers
+gaussian_vector <- rnorm(n = 10, mean = 0, sd = 1)
+ordered_vector <- sort(gaussian_vector)
+ordered_vector
+#calculate the density function
+dnorm(ordered_vector, mean = 0, sd = 1)
+#calculate the distribution function
+d_values <- pnorm(ordered_vector, mean = 0, sd = 1)
+d_values
+#calculate the quantile value
+qnorm(d_values, 0,1)
+```
+
+####In Python
+```{python,engine.path="/Users/lawrence/anaconda/bin/python"}
+from scipy.stats import norm
+#generate random numbers
+gaussian_vector = norm.rvs(loc=0, scale=1, size = 10)
+gaussian_vector.sort()
+print gaussian_vector, "\n"
+#calculate the distribution function
+print norm.pdf(gaussian_vector, loc=0, scale=1), "\n"
+#calculate the distribution function
+d_values = norm.cdf(gaussian_vector, loc=0, scale=1)
+print d_values, "\n"
+#calculate the quantile value
+print norm.ppf(d_values, loc=0, scale=1), "\n"
+```
+
