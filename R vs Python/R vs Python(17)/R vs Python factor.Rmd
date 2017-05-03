@@ -1,0 +1,51 @@
+---
+title: "R vs Python factor and cut"
+author: "Lawrence"
+date: "May 02 , 2017"
+output: html_document
+---
+## We believe two languages can be killed with one stone!
+***
+***
+
+Factor is a important data structure in R. Many functions takes factor differently from character and numeric. It seems like a character but is stored as numeric internally. We will show the difference between R and Python.
+
+####In R
+```{r}
+#create a numeric vector
+b <- rep(c("a", "b", "c"), length.out = 9)
+#covnert b to a factor
+factor.b <- as.factor(b)
+
+a <- 1:9
+factor.a <- cut(a, breaks = c(0,3,6,9), include.lowest = TRUE)
+factor.a
+
+#the mode of factor.a is numeric 
+mode(factor.a)
+#we can convert factor to numeric
+as.numeric(factor.a)
+
+```
+
+
+####In Python
+Python has something similar to factor, which is category.
+```{python,engine.path="/Users/lawrence/anaconda/bin/python"}
+import pandas as pd
+import numpy as np
+#create a pandas series of type character
+b = pd.Series(np.tile(["a", "b", "c"], 3))
+#convert b to a category
+print b, '\n'
+b_cat = b.astype("category")
+print b_cat, '\n'
+
+#create a pandas series of type int
+a = pd.Series(xrange(1,10))
+#cut a into 3 categories
+print pd.cut(a, bins=[0,3,6,10]), '\n'
+#pandas category can be converted back to a string, but can't be converted to int
+print b.astype("string")
+```
+
