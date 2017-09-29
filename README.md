@@ -1,7 +1,1 @@
-# Wechat-
-Materials for Wechat 
-
-
-
-
-Contributor: 
+R vs Python Cheat Sheet
